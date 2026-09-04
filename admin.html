@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لوحة الإدارة - مشغل العسر</title>
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    .admin-wrap{max-width:900px;margin:40px auto;padding:20px}
+    .login-panel, .admin-panel{background:#fff;border-radius:12px;padding:18px;border:1px solid var(--line)}
+    .field-row{margin-bottom:12px}
+    .admin-list{display:grid;gap:12px}
+    .admin-item{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px;border-radius:8px;border:1px solid var(--line);background:#fffdfb}
+    .small{padding:8px 12px;border-radius:8px}
+  </style>
+</head>
+<body>
+  <div class="container admin-wrap">
+    <h1>لوحة الإدارة</h1>
+    <div id="loginPanel" class="login-panel">
+      <h2>تسجيل دخول</h2>
+      <div class="field-row">
+        <label>كلمة المرور
+          <input type="password" id="adminPass" placeholder="أدخل كلمة المرور" />
+        </label>
+      </div>
+      <button id="loginBtn" class="submit-btn">دخول</button>
+      <p style="margin-top:10px;color:var(--muted);font-size:0.95rem">الكلمة الافتراضية: <strong>admin123</strong>. يمكنك تغييرها لاحقاً في الكود.</p>
+    </div>
+
+    <div id="adminPanel" class="admin-panel" style="display:none">
+      <h2>إدارة المنتجات والفيديوهات</h2>
+      <form id="productForm">
+        <input type="hidden" id="prodId" />
+        <div class="field-row">
+          <label>اسم المنتج
+            <input id="prodName" required />
+          </label>
+        </div>
+        <div class="field-row two-cols">
+          <label>الفئة <input id="prodCategory" required /></label>
+          <label>الكمية <input id="prodStock" type="number" min="0" value="1" required /></label>
+        </div>
+        <div class="field-row two-cols">
+          <label>صورة المنتج (ملف)
+            <input id="prodImage" type="file" accept="image/*" />
+          </label>
+          <label>فيديو العرض (ملف اختياري)
+            <input id="prodVideo" type="file" accept="video/*" />
+          </label>
+        </div>
+        <div class="field-row">
+          <label>الوصف <textarea id="prodDesc" rows="3"></textarea></label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">حفظ</button>
+          <button type="button" id="cancelEdit" class="cancel-btn">إلغاء</button>
+        </div>
+      </form>
+
+      <h3 style="margin-top:20px">قائمة المنتجات</h3>
+      <div id="adminList" class="admin-list"></div>
+
+      <h3 style="margin-top:20px">إعلانات المتجر (عرض على الشاشة)</h3>
+      <form id="announceForm">
+        <div class="field-row">
+          <label>عنوان الإعلان
+            <input id="announceTitle" placeholder="مثال: عرض الأسبوع" />
+          </label>
+        </div>
+        <div class="field-row">
+          <label>فيديو الإعلان (ملف)
+            <input id="announceFile" type="file" accept="video/*" />
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">أضف الإعلان</button>
+        </div>
+      </form>
+      <div id="announceList" style="margin-top:12px"></div>
+      <div style="margin-top:18px">
+        <button id="logoutBtn" class="cancel-btn">تسجيل خروج</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
