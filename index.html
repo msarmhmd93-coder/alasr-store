@@ -4,101 +4,344 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>مشغل العسر</title>
+    <meta
+      name="description"
+      content="مشغل العسر متجر فاخر للعبايات والملابس النسائية الإسلامية مع واجهة حديثة ولوحة تحكم داخل الصفحة."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="topbar">
-      <div class="container nav">
-        <div class="brand">مشغل العسر</div>
-        <nav>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand" aria-label="مشغل العسر">
+          <div class="brand-mark">م</div>
+          <div class="brand-text">
+            <span>مشغل</span>
+            <strong>العسر</strong>
+          </div>
+        </div>
+
+        <nav class="main-nav" aria-label="التنقل الرئيسي">
           <a href="#products">المنتجات</a>
-          <a href="https://wa.me/781159414" target="_blank">واتساب</a>
+          <a href="#gallery">معرض الصور</a>
         </nav>
-      </div>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="container hero-content">
-          <div class="hero-text">
-            <p class="eyebrow">معمل عبايات وبراقع ودفايات ونقابات</p>
-            <h1>منتجات أنيقة وجاهزة للشراء</h1>
-            
+        <div class="shop-status-badge" id="shopStatusBadge">متجر مفتوح الآن</div>
+
+        <button class="cart-button" id="openCartBtn" type="button" aria-label="سلة المشتريات">
+          <span>🛒</span>
+          <span class="cart-count" id="cartCountBadge">0</span>
+        </button>
+
+        <button class="admin-button" id="openAdminBtn" type="button" aria-label="لوحة التحكم">
+          <span class="gear-icon">⚙️</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-content">
+            <p class="eyebrow">تجربة ملكية عصرية للأناقة الإسلامية</p>
+            <h1 id="heroTitle">مرحباً بكِ في مشغل العسر</h1>
+            <p class="hero-copy" id="heroText">
+              مجموعة مختارة بعناية من الأقمشة الفاخرة، الألوان الراقية، والتصاميم العربية
+              العصرية التي توازن بين الفخامة والراحة في كل يوم.
+            </p>
+
             <div class="hero-actions">
-              <a href="#products" class="cta-btn">عرض المنتجات</a>
-              <a href="https://wa.me/781159414" target="_blank" class="whatsapp-btn">واتساب</a>
+              <a href="#products" class="primary-btn">تسوق الآن</a>
+              <button type="button" class="secondary-btn" id="openAdminBtnSecondary" aria-label="لوحة التحكم">
+                <span class="gear-icon small">⚙️</span>
+                لوحة التحكم
+              </button>
+            </div>
+
+            <div class="hero-stats" aria-label="إحصائيات المتجر">
+              <div>
+                <strong>+5k</strong>
+                <span>عميلة راضية</span>
+              </div>
+              <div>
+                <strong>24/7</strong>
+                <span>خدمة سريعة</span>
+              </div>
+              <div>
+                <strong>4.9</strong>
+                <span>تقييم متقدم</span>
+              </div>
+            </div>
+
+            <div class="hero-status-note" id="heroStatusNote">
+              المتجر الآن: <strong>مفتوح</strong>
             </div>
           </div>
-          <div class="hero-card">
-            <div class="mini-card">
-              <span>منتجاتنا</span>
-              <strong id="totalProductsStat">0</strong>
-            </div>
-            <div class="mini-card">
-              <span>المخزون</span>
-              <strong id="stockStat">0</strong>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section id="announcements" class="announcements">
-        <div class="container">
-          <div class="section-title">
-            <p>إعلانات</p>
-            <h2>عروض وإعلانات المتجر</h2>
-          </div>
-          <div id="announcementList" class="announcement-grid"></div>
-        </div>
-      </section>
+          <div class="hero-visual" id="heroShowcase" aria-label="معرض المنتجات"></div>
+        </section>
 
-      <section id="video-showcase" class="video-showcase">
-        <div class="container">
-          <div class="section-title">
-            <p>عروض الفيديو</p>
-            <h2>فيديوهات عرض المنتجات</h2>
+        <section class="gallery-section" id="gallery-images">
+          <div class="section-header">
+            <p>معرض الصور</p>
+            <h2>إطلالة أنيقة من أروع تشكيلاتنا</h2>
           </div>
-          <div id="videoList" class="video-grid"></div>
-        </div>
-      </section>
+          <div class="image-gallery-grid" id="imageGallery"></div>
+        </section>
 
-      <section id="products" class="products">
-        <div class="container">
-          <div class="section-title">
-            <p>منتجاتنا</p>
-            <h2>أحدث المنتجات</h2>
+        <section class="video-section" id="gallery">
+          <div class="section-header">
+            <p>معرض الفيديوهات</p>
+            <h2>فيديوهات تعكس روح الأناقة والهوية</h2>
           </div>
-          <div id="productList" class="product-grid"></div>
-        </div>
-      </section>
-    </main>
+          <div class="video-grid" id="videoGallery"></div>
+        </section>
 
-    <footer class="footer">
-      <div class="container">
-        <p>© 2026 مشغل العسر - جميع الحقوق محفوظة</p>
+        <section class="product-section" id="products">
+          <div class="section-header">
+            <p>المنتجات</p>
+            <h2>اختر ما يناسبك</h2>
+          </div>
+          <div class="product-grid" id="productGrid"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>مشغل العسر</strong>
+          <span>الطابع الفاخر في كل قطعة</span>
+        </div>
+        <a href="https://wa.me/967781159414" target="_blank" rel="noreferrer">تواصل معنا عبر الواتساب</a>
+      </footer>
+    </div>
+
+    <div class="cart-modal" id="cartModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-cart="true"></div>
+
+      <div class="modal-panel cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+        <button class="close-button" id="closeCartBtn" type="button" aria-label="إغلاق السلة">×</button>
+
+        <div class="modal-header">
+          <p>سلة المشتريات</p>
+          <h3 id="cartTitle">منتجاتك المختارة</h3>
+        </div>
+
+        <div class="cart-items" id="cartItemsList"></div>
+
+        <div class="cart-footer">
+          <button type="button" class="secondary-btn full" id="closeCartBtnSecondary">إغلاق</button>
+          <button type="button" class="primary-btn full" id="checkoutCartBtn">شراء</button>
+        </div>
       </div>
-    </footer>
+    </div>
 
-    <a class="whatsapp-float" href="https://wa.me/781159414" target="_blank" aria-label="تواصل عبر واتساب">
-      WhatsApp
-    </a>
+    <div class="admin-modal" id="adminModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal="true"></div>
 
-    <!-- Cart button & modal -->
-    <button id="cartToggle" class="cart-btn" aria-label="سلة المشتريات">سلة (<span id="cartCount">0</span>)</button>
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="close-button" id="closeModalBtn" type="button" aria-label="إغلاق النافذة">
+          ×
+        </button>
 
-    <div id="cartModal" class="cart-modal" aria-hidden="true">
-      <div class="cart-panel">
-        <header class="cart-header">
-          <h3>سلة المشتريات</h3>
-          <button id="closeCart" class="cancel-btn">إغلاق</button>
-        </header>
-        <div id="cartItems" class="cart-items"></div>
-          <div class="cart-actions">
-          <button id="clearCart" class="cancel-btn">تفريغ السلة</button>
-          <button id="checkoutBtn" class="submit-btn">شراء عبر واتساب</button>
+        <div class="login-state" id="loginState">
+          <div class="modal-header">
+            <p>تسجيل دخول المدير</p>
+            <h3 id="modalTitle">لوحة التحكم</h3>
+          </div>
+
+          <form id="loginForm" class="auth-form">
+            <label>
+              البريد الإلكتروني
+              <input type="email" id="adminEmail" placeholder="hghyhgyh@gmail.com" required />
+            </label>
+            <label>
+              كلمة المرور
+              <div class="password-wrap">
+                <input type="password" id="adminPassword" placeholder="أدخل كلمة المرور" required />
+                <button type="button" class="toggle-password" data-toggle-password="adminPassword">إظهار</button>
+              </div>
+            </label>
+            <button type="submit" class="primary-btn full">تسجيل الدخول</button>
+          </form>
+        </div>
+
+        <div class="admin-panel hidden" id="adminPanel">
+          <div class="admin-header">
+            <div>
+              <p>إدارة المتجر</p>
+              <h3>لوحة مدير المشغل</h3>
+            </div>
+            <button type="button" class="logout-btn" id="logoutBtn">تسجيل الخروج</button>
+          </div>
+
+          <div class="status-controller">
+            <div class="status-info">
+              <span class="status-label">حالة المتجر</span>
+              <strong id="shopStatusText">مفتوح الآن</strong>
+            </div>
+            <button type="button" class="status-btn" id="toggleShopStatusBtn">تبديل الحالة</button>
+          </div>
+
+          <div class="admin-grid subtle-grid">
+            <section class="admin-card">
+              <h4>إعدادات البريد الإلكتروني</h4>
+              <form id="emailSettingsForm" class="stacked-form">
+                <label>
+                  البريد الإلكتروني الخاص
+                  <input type="email" id="customEmailInput" placeholder="hghyhgyh@gmail.com" />
+                </label>
+                <label>
+                  البريد الرسمي
+                  <input type="email" id="officialEmailInput" placeholder="msarmhmd93@gmail.com" />
+                </label>
+                <button type="submit" class="primary-btn full">حفظ البريد</button>
+              </form>
+            </section>
+
+            <section class="admin-card">
+              <h4>إدارة النشر</h4>
+              <div class="publisher-box">
+                <p>يمكنك إدارة المنتجات، الصور، والفيديوهات من هنا في نفس المكان.</p>
+                <div class="publisher-actions">
+                  <span>إضافة منتج</span>
+                  <span>إضافة فيديو</span>
+                  <span>إضافة صورة</span>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="admin-grid">
+            <section class="admin-card">
+              <h4>تعديل نص الترحيب</h4>
+              <form id="heroForm" class="stacked-form">
+                <label>
+                  العنوان الرئيسي
+                  <input type="text" id="heroTitleInput" placeholder="مرحباً بكِ في مشغل العسر" required />
+                </label>
+                <label>
+                  نص الوصف
+                  <textarea id="heroTextInput" rows="4" placeholder="اكتب وصف المتجر هنا" required></textarea>
+                </label>
+                <label>
+                  الصورة الرئيسية 1
+                  <input type="file" id="heroShowcaseFile1" accept="image/*" />
+                </label>
+                <label>
+                  الصورة الرئيسية 2
+                  <input type="file" id="heroShowcaseFile2" accept="image/*" />
+                </label>
+                <label>
+                  الصورة الرئيسية 3
+                  <input type="file" id="heroShowcaseFile3" accept="image/*" />
+                </label>
+                <button type="submit" class="primary-btn full">حفظ النصوص والصور</button>
+              </form>
+            </section>
+
+            <section class="admin-card">
+              <h4>إضافة صورة للمعرض</h4>
+              <form id="galleryForm" class="stacked-form">
+                <label>
+                  اختر صورة من الكمبيوتر
+                  <input type="file" id="galleryImageFile" accept="image/*" required />
+                </label>
+                <label>
+                  عنوان الصورة
+                  <input type="text" id="galleryImageTitle" placeholder="عنوان الصورة" required />
+                </label>
+                <button type="submit" class="primary-btn full">إضافة الصورة</button>
+              </form>
+            </section>
+          </div>
+
+          <div class="admin-grid">
+            <section class="admin-card">
+              <h4>إضافة منتج جديد</h4>
+              <form id="productForm" class="stacked-form">
+                <label>
+                  اختر صورة المنتج من الكمبيوتر
+                  <input type="file" id="productImageFile" accept="image/*" required />
+                </label>
+                <label>
+                  اسم المنتج
+                  <input type="text" id="productName" placeholder="اسم القطعة" required />
+                </label>
+                <label>
+                  وصف القطعة
+                  <textarea id="productDescription" rows="3" placeholder="اكتب وصف القطعة هنا..." required></textarea>
+                </label>
+                <label>
+                  رابط المنتج الخاص (اختياري)
+                  <input type="url" id="productLink" placeholder="https://example.com/منتج-1" />
+                </label>
+                <label>
+                  السعر (ريال)
+                  <input type="number" id="productPrice" min="1" placeholder="299" required />
+                </label>
+                <label>
+                  التصنيف
+                  <select id="productCategory" required>
+                    <option value="">اختر القسم</option>
+                    <option value="سلة مبيعات">سلة مبيعات</option>
+                    <option value="منتجات">منتجات</option>
+                    <option value="مجموعات">مجموعات</option>
+                    <option value="أكثر طلباً">أكثر طلباً</option>
+                    <option value="إكسسوارات">إكسسوارات</option>
+                  </select>
+                </label>
+                <button type="submit" class="primary-btn full">نشر المنتج</button>
+              </form>
+            </section>
+
+            <section class="admin-card">
+              <h4>إضافة فيديو ترويجي</h4>
+              <form id="videoForm" class="stacked-form">
+                <label>
+                  اختر فيديو من الكمبيوتر
+                  <input type="file" id="videoFile" accept="video/*" required />
+                </label>
+                <label>
+                  عنوان الفيديو
+                  <input type="text" id="videoTitle" placeholder="عنوان العرض" required />
+                </label>
+                <button type="submit" class="primary-btn full">إضافة الفيديو</button>
+              </form>
+            </section>
+          </div>
+
+          <div class="admin-lists">
+            <section class="data-panel">
+              <h4>المنتجات المخزنة</h4>
+              <ul id="adminProductList" class="admin-list"></ul>
+            </section>
+
+            <section class="data-panel">
+              <h4>الفيديوهات المخزنة</h4>
+              <ul id="adminVideoList" class="admin-list"></ul>
+            </section>
+          </div>
+
+          <div class="admin-lists">
+            <section class="data-panel">
+              <h4>معرض الصور المخزنة</h4>
+              <ul id="adminGalleryList" class="admin-list"></ul>
+            </section>
+
+            <section class="data-panel settings-panel">
+              <h4>إعدادات التواصل</h4>
+              <ul class="contact-list">
+                <li><span>واتساب</span><a href="https://wa.me/967770169698" target="_blank" rel="noreferrer">770169698</a></li>
+                <li><span>واتساب</span><a href="https://wa.me/967739959877" target="_blank" rel="noreferrer">739959877</a></li>
+                <li><span>واتساب</span><a href="https://wa.me/967781159414" target="_blank" rel="noreferrer">781159414</a></li>
+              </ul>
+            </section>
+          </div>
+
         </div>
       </div>
     </div>
